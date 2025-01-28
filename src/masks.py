@@ -1,3 +1,4 @@
+from  widget import mask_account_card
 def get_mask_card_number(card_number: int) -> str:
     """Принимает номер карты. Возвращает замаскированный номер карты."""
 
