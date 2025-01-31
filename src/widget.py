@@ -1,18 +1,20 @@
-from masks import get_mask_card_number
-
-number = {'1': 'Visa Platinum 7000792289606361', '2': 'Maestro 7000792289606361', '3': 'Счет 73654108430135874305'}
+from src.masks import get_mask_card_number
 
 
-def mask_account_card(**kwargs):
-    pass
-    number['1'] = get_mask_card_number
-    return get_mask_card_number(number)
+def mask_account_card(user_data):
+    name_bank = ""
+    number_account = ""
+    for symbol in user_data:
+        if symbol.isalpha():
+            name_bank = "".join([name_bank, symbol])
 
-mask_account_card(**number)
-'''Аргументом может быть строка типа 
-Visa Platinum 7000792289606361
-, или 
-Maestro 7000792289606361
-, или 
-Счет 73654108430135874305
-. Разделять строку на 2 аргумента (отдельно имя, отдельно номер) нельзя!'''
+        if symbol.isdigit():
+            number_account = "".join([number_account,symbol])
+
+    number_account = int(number_account)
+    print(name_bank, number_account)
+
+    return  get_mask_card_number(name_bank, number_account)
+
+
+mask_account_card("Счет 35383033474447895560")
