@@ -2,39 +2,25 @@ from src.masks import get_mask_card_number
 from src.masks import get_mask_account
 
 
-def mask_account_card(user_data):
-    name_bank = ""
-    number_account = ""
-    for symbol in user_data:
-        if symbol.isalpha():
-            name_bank = "".join([name_bank, symbol])
+def mask_account_card(user_data: str) -> str:
+    """Функция принимает наименование карты и её номер или наименование счёта и его номер.
+    Возвращает наименование карты / счёта без изменений и замаскированный номер."""
 
-        if symbol.isdigit():
-            number_account = "".join([number_account,symbol])
-
+    user_data = user_data.split(" ")
+    name_bank = " ".join(user_data[:-1])
+    number_account = "".join(user_data[-1])
     number_account = int(number_account)
-    #print("ok_widget")
-    if len(str(number_account)) > 17:
-        print(get_mask_account(name_bank,  number_account))
-        return get_mask_account(name_bank,  number_account)
+
+    if len(str(number_account)) > 16:
+        return get_mask_account(name_bank, number_account)
+
     else:
-        print(get_mask_card_number(name_bank, number_account))
         return get_mask_card_number(name_bank, number_account)
 
 
-def test_production():
-
-    data_test = [
-    "Maestro 1596837868705199",
-    "Счет 64686473678894779589",
-    "MasterCard 7158300734726758",
-    "Счет 35383033474447895560",
-    "Visa  Classic 6831982476737658",
-    'Visa Platinum 8990922113665229',
-    "Visa Gold 5999414228426353",
-    "Счет 73654108430135874305"
-    ]
-    for i in data_test:
-         mask_account_card(i)
-
-test_production()
+def get_date(date: str) -> str:
+    """Функция принимает дату формата "ISO 8601" .
+    Возвращает дату привычного формата ХХ.ХХ.ХХХХ. ."""
+    date = date[:10].split("-")
+    date = ".".join(reversed(date))
+    return date
