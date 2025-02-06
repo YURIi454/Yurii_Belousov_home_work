@@ -3,6 +3,8 @@
 
 from src.masks import get_mask_card_number
 from src.masks import get_mask_account
+from src.processing import filter_by_state
+from src.processing import sort_by_date
 
 
 """Проверка и отладка"""
@@ -28,25 +30,25 @@ def mask_account_card(user_data):
         return get_mask_card_number(name_bank, number_account)
 
 def test_():
-    """Функция тестирования домашки 9.2 git"""#
-#    filter_by_state(
-#     [
-#     {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
-#     {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
-#     {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
-#     ], "EXECUTED"   )
-#
-#    sort_by_date(
-#        [
-#            {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
-#            {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
-#            {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
-#            {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
-#        ], True
-#    )
+    """Функция тестирования домашки 10.1"""#
+    print(filter_by_state(
+     [
+     {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+     {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
+     {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+     ], "EXECUTED"   ))
+
+    print(sort_by_date(
+        [
+            {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+            {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
+            {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+            {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+        ], True
+    ))
 
 def test_production():
-    """Функция тестирования домашки 10.1"""
+    """Функция тестирования домашки 9.2"""
 
     test_()
 
