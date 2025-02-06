@@ -28,7 +28,7 @@ def mask_account_card(user_data):
         return get_mask_card_number(name_bank, number_account)
 
 def test_():
-    """Временная функция тестирования"""#
+    """Функция тестирования домашки 9.2 git"""#
 #    filter_by_state(
 #     [
 #     {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
@@ -46,7 +46,7 @@ def test_():
 #    )
 
 def test_production():
-    """Тест"""
+    """Функция тестирования домашки 10.1"""
 
     test_()
 
@@ -68,7 +68,6 @@ def test_production():
 test_production()
 
 if __name__ == "__main__":
-
     print("Запуск из модуля из \033[32m ignore_this_file_(tests).py\033[39m")
     test_()
 
