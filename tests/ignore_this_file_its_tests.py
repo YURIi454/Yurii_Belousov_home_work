@@ -8,6 +8,7 @@ from src.processing import sort_by_date
 
 
 """Проверка и отладка"""
+
 def mask_account_card(user_data):
     """Тест"""
 
@@ -15,7 +16,7 @@ def mask_account_card(user_data):
     name_bank = " ".join(user_data[:-1])
     number_account = "".join(user_data[-1])
 
-    print( " ".join(user_data[-1])) # лишний пробел, уронил функцию.
+    print( "".join(user_data[-1])) # лишний пробел, уронил функцию.
 
     number_account = int(number_account)
 
@@ -28,6 +29,7 @@ def mask_account_card(user_data):
     else:
         print(get_mask_card_number(name_bank, number_account))
         return get_mask_card_number(name_bank, number_account)
+
 
 def test_():
     """Функция тестирования домашки 10.1"""#
@@ -50,8 +52,6 @@ def test_():
 def test_production():
     """Функция тестирования домашки 9.2"""
 
-    test_()
-
     data_test = [
     "Maestro 1596837868705199",
     "Счет 64686473678894779589",
@@ -70,8 +70,8 @@ def test_production():
 test_production()
 
 if __name__ == "__main__":
-    print("Запуск из модуля из \033[32m ignore_this_file_(tests).py\033[39m")
+    print("Запуск из модуля из \033[32m ignore_this_file_tests.py\033[39m")
     test_()
 
 else:
-    print("Запуск из \033[32mprocessing.py\033[39m")
+    print("Запуск из \033[31mимпорта\033[39m")

@@ -16,7 +16,6 @@ def sort_by_date(us_dt: list, rev_=False) -> list:
     задающий порядок сортировки (default="reverse=False").
     Функция возвращает новый список, отсортированный по дате."""
 
-    sort_list = []
     sort_list = sorted(us_dt, reverse=rev_, key=lambda x: x["date"])
 
     return sort_list
