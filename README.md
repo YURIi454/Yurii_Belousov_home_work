@@ -9,4 +9,4 @@
 * Маскировка номеров счетов
 * Смена формата даты
 
-[Ссылка на проект]()
+[Ссылка на проект](https://github.com/YURIi454/Yurii_Belousov_home_work/tree/feature/home_work_git_10.1?tab=readme-ov-file#readme)
