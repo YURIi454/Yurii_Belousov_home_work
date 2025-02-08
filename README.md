@@ -9,4 +9,17 @@
 * Маскировка номеров счетов
 * Смена формата даты
 
-[Ссылка на проект](https://github.com/YURIi454/Yurii_Belousov_home_work/tree/feature/home_work_git_10.1?tab=readme-ov-file#readme)
+### Запуск 
+Для PyCharm 
+1. Клонируйте репозиторий [по ссылке](https://github.com/YURIi454/Yurii_Belousov_home_work/tree/feature/home_work_git_10.1?tab=readme-ov-file#readme)
+2. Установите зависимости проекта
+    * flake8 = "^7.1.1"
+    * mypy = "^1.14.1"
+    * black = "^24.10.0"
+    * isort = "^5.13.2"
+- PyCharm сам предложит установить
+3. Можно пользоваться
+
+### Содержание
+Модули
+* присутствует модуль тестирования функций 

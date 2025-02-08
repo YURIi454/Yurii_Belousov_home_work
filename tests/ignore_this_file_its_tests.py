@@ -32,7 +32,7 @@ def mask_account_card(user_data):
 
 
 def test_():
-    """Функция тестирования домашки 10.1"""#
+    """Функция тестирования домашки 10.1"""
     print(filter_by_state(
      [
      {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
