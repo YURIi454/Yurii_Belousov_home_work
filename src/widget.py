@@ -1,3 +1,4 @@
+
 from src.masks import get_mask_card_number
 from src.masks import get_mask_account
 
@@ -21,6 +22,7 @@ def mask_account_card(user_data: str) -> str:
 def get_date(date: str) -> str:
     """Функция принимает дату формата "ISO 8601" .
     Возвращает дату привычного формата ХХ.ХХ.ХХХХ. ."""
+
     date = date[:10].split("-")
     date = ".".join(reversed(date))
     return date
