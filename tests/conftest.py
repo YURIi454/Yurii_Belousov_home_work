@@ -1,7 +1,6 @@
-# import pytest
-#
-#
-# @pytest.fixture
-# def check_fun():
-#     def filter_by_state():
-#         pass
+import pytest
+
+
+@pytest.fixture
+def test_masks():
+    pass
