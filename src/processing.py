@@ -1,7 +1,7 @@
 
 
 def filter_by_state(user_data: list, key_word: str = "EXECUTED") -> list:
-    """Функция принимает список словарей и значение ключа фильтра (default='EXECUTED').
+    """Принимает список словарей и значение ключа фильтра (default='EXECUTED').
     Возвращает отфильтрованный список словарей."""
 
     new_list = []
@@ -14,7 +14,7 @@ def filter_by_state(user_data: list, key_word: str = "EXECUTED") -> list:
 
 
 def sort_by_date(user_data: list, rev_: bool = False) -> list:
-    """Функция принимает список словарей и параметр,
+    """Принимает список словарей и параметр,
     задающий порядок сортировки (default="reverse=False").
     Функция возвращает новый список, отсортированный по дате."""
 

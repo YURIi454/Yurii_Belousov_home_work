@@ -4,50 +4,52 @@ from src.widget import mask_account_card
 from src.widget import get_date
 from src.processing import filter_by_state
 from src.processing import sort_by_date
+import pytest
 
 
-def test_masks_0():
-    assert get_mask_card_number("", None) == " None ** **** "
+'''Тесты для модуля masks.py'''
 
 
-def test_masks_1():
-    assert get_mask_card_number("", 445566) == " 4455 66** **** "
+@pytest.mark.parametrize(("name", "card_number", "result"),
+                         (("", 123, ' 123 ** **** '),
+                          ("", 445566, " 4455 66** **** "),
+                          ("Maestro", 3652125478546985, "Maestro 3652 12** **** 6985")))
+def test_masks_0(name, card_number, result):
+    assert get_mask_card_number(name, card_number) == result
 
 
-def test_masks_2():
-    assert get_mask_card_number("a", 3652125478546985) == "a 3652 12** **** 6985"
+@pytest.mark.parametrize(("name", "card_number", "result"),
+                         (("", None, " **None"),
+                         ("b", 0, "b **0"),
+                         ("b", 45676, "b **5676")))
+def test_masks_1(name, card_number, result):
+    assert get_mask_account(name, card_number) == result
 
 
-def test_masks_3():
-    assert get_mask_account("b", 0) == "b **0"
+''' Тесты модуля widget.py'''
 
 
-def test_masks_4():
-    assert get_mask_account("b", 45676) == "b **5676"
+@pytest.mark.parametrize(("data", "mod_data"),
+                         (("12345689357356756756756756756", " **6756"),
+                          ("only letters", "only letters  ** **** "),
+                          ("Letters and 36521474", "Letters and 3652 14** **** ")))
+def test_widget_0(data, mod_data):
+    assert mask_account_card(data) == mod_data
 
 
-def test_widget_0():
-    assert mask_account_card("12345689357356756756756756756") == " **6756"
+@pytest.mark.parametrize(("date", "reformat_date"),
+                         (("22.22.2222", "22.22.2222"),
+                         ("9876-25-12-1245-458", "12.25.9876")))
+def test_widget_1(date,reformat_date):
+    assert get_date(date) == reformat_date
 
 
-def test_widget_1():
-    assert mask_account_card("only letters") == "only letters  ** **** "
+'''Тесты модуля processing.py'''
 
-
-def test_widget_2():
-    assert mask_account_card("Letters and 36521474") == "Letters and 3652 14** **** "
-
-
-def test_widget_3():
-    assert get_date("22.22.2222") == "22.22.2222"
-
-
-def test_widget_4():
-    assert get_date("9876-25-12-1245-458") == "12.25.9876"
-
-
-def test_processing_0():
-    assert filter_by_state([], " ") == []
+@pytest.mark.parametrize(("list_1", " ", "list_2"),
+                         ([], "CANCELED", []))
+def test_processing_0(a, b, c):
+    assert filter_by_state(a,b) == c
 
 
 def test_processing_1():
