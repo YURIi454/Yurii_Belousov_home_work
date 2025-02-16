@@ -14,7 +14,10 @@ def mask_account_card(user_data: str) -> str:
     name_bank = " ".join(name_bank)
     number_account = " ".join(number_account)
 
-    if len(str(number_account)) > 16:
+    if len(number_account) <= 16:
+        print("Проверьте корректность данных!")
+
+    if len(number_account) > 16:
         return get_mask_account(name_bank, int(number_account))
 
     else:
@@ -24,7 +27,17 @@ def mask_account_card(user_data: str) -> str:
 def get_date(date: str) -> str:
     """Принимает дату формата "ISO 8601" .
     Возвращает дату привычного формата ХХ.ХХ.ХХХХ. ."""
+    import datetime
+    default_date = "01.01.2000"
 
-    date = date[:10].split("-")
-    date = ".".join(reversed(date))
-    return date
+    if date.isalpha() or date.isspace():
+        return default_date
+
+    elif len(date) == 0:
+        return default_date
+
+    else:
+        date = date[:10].split("-")
+        date = ".".join(reversed(date))
+
+        return date

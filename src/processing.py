@@ -7,6 +7,8 @@ def filter_by_state(user_data: list, key_word: str = "EXECUTED") -> list:
     new_list = []
 
     for item in user_data:
+        if "state" not in item:
+            print("error")
         if item.get("state") == key_word:
             new_list.append(item)
 
