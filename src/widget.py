@@ -27,7 +27,7 @@ def mask_account_card(user_data: str) -> str:
 def get_date(date: str) -> str:
     """Принимает дату формата "ISO 8601" .
     Возвращает дату привычного формата ХХ.ХХ.ХХХХ. ."""
-    import datetime
+
     default_date = "01.01.2000"
 
     if date.isalpha() or date.isspace():
