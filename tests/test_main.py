@@ -8,7 +8,7 @@
 # import pytest
 
 
-#'''Тесты для модуля masks.py'''
+# '''Тесты для модуля masks.py'''
 
 
 # @pytest.mark.parametrize(("name", "card_number", "result"),
@@ -27,7 +27,7 @@
 #     assert get_mask_account(name, card_number) == result
 
 
-#''' Тесты модуля widget.py'''
+# ''' Тесты модуля widget.py'''
 
 
 # @pytest.mark.parametrize(("data", "mod_data"),
@@ -45,7 +45,7 @@
 #     assert get_date(date) == reformat_date
 
 
-#'''Тесты модуля processing.py'''
+# '''Тесты модуля processing.py'''
 
 # @pytest.mark.parametrize(("list_1", " ", "list_2"),
 #                          ([], "CANCELED", []))
@@ -106,4 +106,3 @@
 #
 # def test_processing_9():
 #     assert sort_by_date([], False) == []
-

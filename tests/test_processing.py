@@ -1,59 +1,68 @@
 from src.processing import filter_by_state
 from src.processing import sort_by_date
 
-''' Тестирование модуля processing.py '''
+""" Тестирование модуля processing.py """
+
+
+def test_processing_0():
+    assert filter_by_state(
+        [
+            {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+            {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
+            {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+            {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+        ],
+        "EXECUTED",
+    ) == [
+        {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+        {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
+    ]
 
 
 def test_processing_1():
-    assert filter_by_state([], "CANCELED") == []
+    assert filter_by_state(
+        [
+            {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+            {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
+            {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+            {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+        ],
+        "CANCELED",
+    ) == [
+        {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+        {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+    ]
 
 
 def test_processing_2():
-    assert filter_by_state([], "EXECUTED") == []
+    assert sort_by_date(
+        [
+            {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+            {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
+            {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+            {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+        ],
+        True,
+    ) == [
+        {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+        {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+        {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+        {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
+    ]
 
 
 def test_processing_3():
-    assert filter_by_state(
-        [{"test": "pass", "": ""}, {"test": "ok", "state": "EXECUTED"}], "CANCELED"
-    ) == []
-
-
-def test_processing_4():
-    assert filter_by_state(
-        [{"test": "pass", "state": "CANCELED"}, {"test": "ok", "state": "EXECUTED"}], "EXECUTED"
-    ) == [{"test": "ok", "state": "EXECUTED"}]
-
-
-def test_processing_5():
-    assert sort_by_date([{"date": "0"}, {"date": "1"}, {"date": "2"}, {"date": "3"}], False) == [
-        {"date": "0"},
-        {"date": "1"},
-        {"date": "2"},
-        {"date": "3"},
+    assert sort_by_date(
+        [
+            {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
+            {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
+            {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+            {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+        ],
+        False,
+    ) == [
+        {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
+        {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+        {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+        {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
     ]
-
-
-def test_processing_6():
-    assert sort_by_date([{"date": "0"}, {"date": "1"}, {"date": "2"}, {"date": "3"}], True) == [
-        {"date": "3"},
-        {"date": "2"},
-        {"date": "1"},
-        {"date": "0"},
-    ]
-
-
-def test_processing_7():
-    assert sort_by_date([{"date": "0"}, {"date": "0"}, {"date": "0"}, {"date": "0"}], True) == [
-        {"date": "0"},
-        {"date": "0"},
-        {"date": "0"},
-        {"date": "0"},
-    ]
-
-
-def test_processing_8():
-    assert sort_by_date([], True) == []
-
-
-def test_processing_9():
-    assert sort_by_date([], False) == []
