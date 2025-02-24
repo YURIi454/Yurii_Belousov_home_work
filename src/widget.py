@@ -1,4 +1,3 @@
-
 from src.masks import get_mask_card_number
 from src.masks import get_mask_account
 
@@ -9,8 +8,8 @@ def mask_account_card(user_data: str) -> str:
 
     import re
 
-    name_bank = re.findall(r'[а-яёА-ЯЁa-zA-Z]+', user_data)
-    number_account = re.findall(r'\d+', user_data)
+    name_bank = re.findall(r"[а-яёА-ЯЁa-zA-Z]+", user_data)
+    number_account = re.findall(r"\d+", user_data)
 
     name_bank = " ".join(name_bank)
     number_account = " ".join(number_account)
@@ -19,10 +18,10 @@ def mask_account_card(user_data: str) -> str:
         print("Проверьте корректность данных!")
 
     if len(number_account) == 20:
-        return get_mask_account(name_bank, int(number_account))
+        return get_mask_account(str(name_bank), int(number_account))
 
     if len(number_account) == 16:
-        return get_mask_card_number(name_bank, number_account)
+        return get_mask_card_number(str(name_bank), str(number_account))
 
 
 def get_date(date: str) -> str:

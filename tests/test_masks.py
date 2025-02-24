@@ -8,7 +8,7 @@ import pytest
 @pytest.mark.parametrize(("name", "card_number", "result"),
                          (("", " ", "   ** **** "),
                           ("", "445566", " 4455 66** **** "),
-                          ("Maestro", 3652125478546985, "Maestro 3652 12** **** 6985")))
+                          ("Maestro", "3652125478546985", "Maestro 3652 12** **** 6985")))
 def test_masks_0(name, card_number, result):
     assert get_mask_card_number(name, card_number) == result
 
