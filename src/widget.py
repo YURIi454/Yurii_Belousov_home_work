@@ -1,5 +1,4 @@
-from src.masks import get_mask_card_number
-from src.masks import get_mask_account
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(user_data: str) -> str:
@@ -14,14 +13,14 @@ def mask_account_card(user_data: str) -> str:
     name_bank = " ".join(name_bank)
     number_account = " ".join(number_account)
 
-    if len(number_account) <= 16:
-        print("Проверьте корректность данных!")
-
     if len(number_account) == 20:
         return get_mask_account(str(name_bank), int(number_account))
 
     if len(number_account) == 16:
         return get_mask_card_number(str(name_bank), str(number_account))
+
+    else:
+        return ""
 
 
 def get_date(date: str) -> str:
@@ -37,7 +36,7 @@ def get_date(date: str) -> str:
         return default_date
 
     else:
-        date = date[:10].split("-")
-        date = ".".join(reversed(date))
+        date_split = date[:10].split("-")
+        date_reformat = ".".join(reversed(date_split))
 
-        return date
+        return date_reformat
