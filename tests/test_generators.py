@@ -1,8 +1,6 @@
-from src.generators import transaction_descriptions
-from src.generators import card_number_generator
-from src.generators import filter_by_currency
-
 import pytest
+
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 """Данные для тестов"""
 
@@ -126,7 +124,7 @@ def test_transaction_descriptions(data):
         ),
     ],
 )
-def test_card_number_generator(start: int, stop: int, card_number: str):
+def test_card_number_generator(start: int, stop: int, card_number: str) -> str:
     test_num = card_number_generator(start, stop)
     number = ""
 
