@@ -1,7 +1,7 @@
 from src.masks import get_mask_account, get_mask_card_number
 
 
-def mask_account_card(user_data: str) -> str:
+def mask_account_card(user_data: str) -> str:  #type: ignore
     """Принимает наименование карты и её номер или наименование счёта и его номер.
     Возвращает наименование карты / счёта без изменений и замаскированный номер."""
 
@@ -10,22 +10,19 @@ def mask_account_card(user_data: str) -> str:
     name_bank = re.findall(r"[а-яёА-ЯЁa-zA-Z]+", user_data)
     number_account = re.findall(r"\d+", user_data)
 
-    name_bank = " ".join(name_bank)
-    number_account = " ".join(number_account)
+    str_name_bank = " ".join(map(str, name_bank))
+    int_number_account = " ".join(map(str, number_account))
 
-    if len(number_account) == 20:
-        return get_mask_account(str(name_bank), int(number_account))
+    if len(int_number_account) == 20:
+        return get_mask_account(str(str_name_bank), int(int_number_account))
 
-    if len(number_account) == 16:
-        return get_mask_card_number(str(name_bank), str(number_account))
-
-    else:
-        return ""
+    if len(int_number_account) == 16:
+        return get_mask_card_number(str(str_name_bank), str(int_number_account))
 
 
 def get_date(date: str) -> str:
-    """Принимает дату формата "ISO 8601" .
-    Возвращает дату привычного формата ХХ.ХХ.ХХХХ. ."""
+    """Принимает дату формата "ISO 8601"
+    Возвращает дату привычного формата ХХ.ХХ.ХХХХ. """
 
     default_date = "01.01.2000"
 

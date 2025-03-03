@@ -3,7 +3,7 @@ from src.processing import filter_by_state, sort_by_date
 """ Тестирование модуля processing.py """
 
 
-def test_processing_0():
+def test_processing_0():  #type: ignore
     assert filter_by_state(
         [
             {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
@@ -18,7 +18,7 @@ def test_processing_0():
     ]
 
 
-def test_processing_1():
+def test_processing_1():  #type: ignore
     assert filter_by_state(
         [
             {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
@@ -33,7 +33,7 @@ def test_processing_1():
     ]
 
 
-def test_processing_2():
+def test_processing_2():  #type: ignore
     assert sort_by_date(
         [
             {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
@@ -50,7 +50,7 @@ def test_processing_2():
     ]
 
 
-def test_processing_3():
+def test_processing_3():  #type: ignore
     assert sort_by_date(
         [
             {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},

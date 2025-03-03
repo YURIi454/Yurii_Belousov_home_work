@@ -14,7 +14,7 @@ from src.widget import get_date, mask_account_card
                           ("Visa Platinum 8990922113665229", "Visa Platinum 8990 92** **** 5229"),
                           ("Visa Gold 5999414228426353", "Visa Gold 5999 41** **** 6353"),
                           ("Счет 73654108430135874305", "Счет **4305")))
-def test_widget_0(data, mod_data):
+def test_widget_0(data: str, mod_data: str):  #type: ignore
     assert mask_account_card(data) == mod_data
 
 
@@ -26,5 +26,5 @@ def test_widget_0(data, mod_data):
                           ("2016-02-29T08:21:33.419441", "29.02.2016"),
                           ("", "01.01.2000"),
                           ("   ", "01.01.2000")))
-def test_widget_1(date, reformat_date):
+def test_widget_1(date: str, reformat_date: str):  #type: ignore
     assert get_date(date) == reformat_date
