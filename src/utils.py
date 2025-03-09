@@ -1,25 +1,35 @@
 import json
+from typing import Any
+
+from src.external_api import get_convert_currency
 
 
-# путь ("C:/Users/Sergey/PycharmProjects/Yurii_Belousov/data/operations.json", "r", encoding="utf-8")
+def read_json(path: str = "") -> list[dict]:
+    """Чтение файлов json, преобразование в объект python."""
 
-def transactions(operations: list[dict]):
-    return operations
+    try:
+        with open(path, "r", encoding="utf-8") as file:
+            file_decode = json.load(file)
+            if not isinstance(file_decode, list):
+                return []
+    except TypeError:
+        return []
+    except FileNotFoundError:
+        return []
+
+    return file_decode
 
 
-def read_json(path=None) -> list[dict]:
-    with open(path) as file:
-        file = json.load(file)
-        return transactions(file)
+def transactions(operations: Any) -> Any:
+    """Принимает транзакцию в рублях, USD или EUR и возвращает сумму транзакции.
+    Обращается к внешнему API для корректировки курса валют и конвертации
+    суммы операции в рубли."""
 
-# with open("C:/Users/Sergey/PycharmProjects/Yurii_Belousov/data/operations.json", "r", encoding="utf-8") as file:
-#     operations = json.load(file)
-#
-# print(len(list(operations)))
+    for elem in operations:
+        if not len(elem):
+            continue
 
-# import chardet
-#
-# # Определяем кодировку
-# with open("C:/Users/Sergey/PycharmProjects/Yurii_Belousov/data/operations.json", 'rb') as file:
-#     encoding = chardet.detect(file.read())['encoding']
-# print(encoding)
+        if elem["operationAmount"]["currency"]["code"] == "RUB":
+            return float(elem["operationAmount"]["amount"])
+        else:
+            return get_convert_currency(elem["operationAmount"]["amount"], elem["operationAmount"]["currency"]["code"])

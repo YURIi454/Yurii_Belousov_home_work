@@ -39,7 +39,7 @@ def card_number_generator(start_number: int, stop_number: int) -> Generator[str]
 
         output_number = []
         for item in range(0, 16, 4):
-            output_number.append(str_number[item: item + 4])
+            output_number.append(str_number[item : item + 4])
 
             card_number: str = " ".join(output_number)  # type: ignore[no-redef]
 

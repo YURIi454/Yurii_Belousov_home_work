@@ -1,7 +1,7 @@
 from src.masks import get_mask_account, get_mask_card_number
 
 
-def mask_account_card(user_data: str) -> str:  #type: ignore
+def mask_account_card(user_data: str) -> str:  # type: ignore
     """Принимает наименование карты и её номер или наименование счёта и его номер.
     Возвращает наименование карты / счёта без изменений и замаскированный номер."""
 
@@ -22,7 +22,7 @@ def mask_account_card(user_data: str) -> str:  #type: ignore
 
 def get_date(date: str) -> str:
     """Принимает дату формата "ISO 8601"
-    Возвращает дату привычного формата ХХ.ХХ.ХХХХ. """
+    Возвращает дату привычного формата ХХ.ХХ.ХХХХ."""
 
     default_date = "01.01.2000"
 

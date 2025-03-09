@@ -82,7 +82,7 @@ transactions_after_filter = [
 ]
 
 
-def test_filter_by_currency():  #type: ignore
+def test_filter_by_currency():  # type: ignore
     assert list(filter_by_currency(transactions, "USD")) == [
         "Перевод организации",
         "Перевод со счета на счет",
@@ -91,7 +91,7 @@ def test_filter_by_currency():  #type: ignore
 
 
 @pytest.mark.parametrize("data", transactions_after_filter)
-def test_transaction_descriptions(data: list[dict]):  #type: ignore
+def test_transaction_descriptions(data: list[dict]):  # type: ignore
 
     test_list = [
         "Перевод организации",
@@ -124,7 +124,7 @@ def test_transaction_descriptions(data: list[dict]):  #type: ignore
         ),
     ],
 )
-def test_card_number_generator(start: int, stop: int, card_number: str) -> str:  #type: ignore
+def test_card_number_generator(start: int, stop: int, card_number: str) -> str:  # type: ignore
     test_num = card_number_generator(start, stop)
     number = ""
 
