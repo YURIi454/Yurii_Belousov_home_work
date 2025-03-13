@@ -68,9 +68,9 @@
     * test_generators - Тесты модуля src.generators
     * test_masks -  Тесты модуля src.masks
     * test_processing - Тесты модуля src.processing
-    * test_utils - Тесты test_utils
+    * test_utils - Тесты src.utils
     * test_widget - Тесты модуля src.widget
-    * test_utils - Тесты модуля src.utils
+    * test_csv_xlsx_ - Тесты модуля src.csv_xlsx_
 
 
 ### Запуск 
@@ -100,3 +100,4 @@
 Функция read_json преобразует файл json с данными по транзакциям в объект python.
 
 Функция transactions пересчитывает транзакцию в рубли из других валют, учитывая актуальный курс.
+
