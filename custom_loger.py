@@ -2,7 +2,7 @@ import logging
 
 
 def get_file_handler():  # type:ignore
-    file_handler = logging.FileHandler("logs/logs.log", mode="w", encoding="UTF-8")
+    file_handler = logging.FileHandler("C:/Users/Sergey/PycharmProjects/Yurii_Belousov/logs/logs.log", mode="w", encoding="UTF-8")
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(
         logging.Formatter("%(asctime)s - [%(levelname)s] - (%(filename)s).%(funcName)s  %(message)s")

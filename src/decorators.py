@@ -16,7 +16,7 @@ def log(filename: Any = None) -> Any:
 
             try:
                 function(*args, **kwargs)
-                write_to_log = f"работа функции {function.__name__} >>> {function(*args, **kwargs)}\n"
+                write_to_log = f"Тест декоратора {function.__name__} >>> {function(*args, **kwargs)}\n"
                 if not filename:
                     print(write_to_log)
                 else:
