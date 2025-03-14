@@ -2,7 +2,7 @@
 ### Создан в рамках учебной программы.
 Дальнейшее описание актуально для текущей версии и будет дополняться в процессе разработки.
 
-В текущей версии релизованна запись логов через __logging__ для модулей __masks__ и __utils__
+Реализованна запись логов через __logging__ для модулей __masks__ и __utils__
 
 ### Модули и файлы
 *  __Пакет src__
@@ -55,27 +55,29 @@
    * Содержит функции отвечающие за запись и форматирование логов.
 
 
+8. Модуль **csv_xlsx_** 
+   *  read_csv_ 
+      * Принимает файл формата CSV, возвращает список.
+   * read_xlsx
+     * Принимает файл формата EXEL, возвращает список. 
+
 * __Пакет tests__
 
     * test_decorators - Тесты модуля src.decorators
+    * test_external_api - Тесты модуля src.external_api 
     * test_generators - Тесты модуля src.generators
     * test_masks -  Тесты модуля src.masks
     * test_processing - Тесты модуля src.processing
+    * test_utils - Тесты src.utils
     * test_widget - Тесты модуля src.widget
-    * test_utils - Тесты модуля src.utils
+    * test_csv_xlsx_ - Тесты модуля src.csv_xlsx_
 
 
 ### Запуск 
 Для PyCharm 
-1. Клонируйте репозиторий [по ссылке](https://github.com/YURIi454/Yurii_Belousov_home_work/tree/feature/home_work_git_10.1?tab=readme-ov-file#readme)
-2. Установите зависимости проекта
-    * flake8 = "^7.1.1"
-    * mypy = "^1.14.1"
-    * black = "^24.10.0"
-    * isort = "^5.13.2"
-    * pytest = "^8.3.4"
-    * pytest-cov = "^6.0.0"
-- PyCharm сам предложит установить
+1. Клонируйте репозиторий [с GitHub](https://github.com/YURIi454/Yurii_Belousov_home_work)
+2. Для установки и обновления всех зависимостей проекта запустите команду poetry update
+
 
 
 ### Тестирование
@@ -98,3 +100,4 @@
 Функция read_json преобразует файл json с данными по транзакциям в объект python.
 
 Функция transactions пересчитывает транзакцию в рубли из других валют, учитывая актуальный курс.
+
