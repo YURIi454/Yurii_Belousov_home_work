@@ -83,11 +83,7 @@ transactions_after_filter = [
 
 
 def test_filter_by_currency():  # type: ignore
-    assert list(filter_by_currency(transactions, "USD")) == [
-        "Перевод организации",
-        "Перевод со счета на счет",
-        "Перевод с карты на карту",
-    ]
+    assert list(filter_by_currency(transactions, "USD")) == transactions_after_filter
 
 
 @pytest.mark.parametrize("data", transactions_after_filter)

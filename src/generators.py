@@ -1,25 +1,41 @@
-from typing import Any, Generator, Iterator
+from typing import Any, Generator
 
 from custom_loger import get_logger
 
-cstm_loger = get_logger()
+logger = get_logger()
 
 
-def filter_by_currency(data: list[dict], key_word: str) -> Iterator:
+def filter_by_currency(data: list[dict], key_word: str = "") -> list[dict]:
     """Принимает на вход список словарей, представляющих транзакции.
     Возвращает итератор, который поочередно выдает транзакции, с заданной валютой."""
 
-    cstm_loger.info("TEST")
+    logger.info("Start!")
+    if not key_word:
+        return data
+    filtered_transactions = []
 
-    filtered_data = filter(lambda item: item["operationAmount"]["currency"]["code"] == key_word, data)
+    for item in data:
+        logger.info("Перебор элементов")
+        if not len(item):
+            continue
+        try:
+            if item.get("operationAmount", {}).get("currency", {}).get("code", {}) == key_word:
+                filtered_transactions.append(item)
+            if item.get("currency_code", {}) == key_word:
+                filtered_transactions.append(item)
+            if item.get("currency_name", {}) == key_word:
+                filtered_transactions.append(item)
 
-    return transaction_descriptions(filtered_data)
+        except KeyError as error:
+            logger.warning(f"{error}")
+    logger.info("Successful!")
+    return filtered_transactions
 
 
 def transaction_descriptions(data: Any) -> Generator[str]:
     """Принимает список словарей с транзакциями и возвращает
     описание каждой операции по очереди."""
-    cstm_loger.info("TEST")
+    logger.info("TEST")
     for descript_operation in data:
         yield descript_operation["description"]
 
@@ -27,7 +43,7 @@ def transaction_descriptions(data: Any) -> Generator[str]:
 def card_number_generator(start_number: int, stop_number: int) -> Generator[str]:
     """Генератор номеров в формате XXXX XXXX XXXX XXXX
     в диапазоне от 0000 0000 0000 0001 до 9999 9999 9999 9999."""
-    cstm_loger.info("TEST")
+    logger.info("TEST")
     finish_number = 9999_9999_9999_9999
     card_number = ""  # type: ignore[no-redef]
 
