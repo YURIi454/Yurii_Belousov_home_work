@@ -18,6 +18,4 @@ def get_convert_currency(amount: float, currency: str) -> Any:
 
     response = requests.get(url, headers=headers)
 
-    print(response.json())
-
     return response.json()["result"]

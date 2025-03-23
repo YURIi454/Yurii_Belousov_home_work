@@ -15,7 +15,7 @@ def test_empty_transactions():  # type:ignore
     assert transactions([{}, {}]) is None
 
 
-def test_transactions():
+def test_transactions() -> None:
     assert (
         transactions(
             [
@@ -48,7 +48,6 @@ def test_normal_read_json():  # type:ignore
 def test_digits(mock_open):  # type:ignore
     """Файл с числами (int)."""
 
-    mock_open.return_value == []
     assert read_json("test.json") == []
 
 

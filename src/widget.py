@@ -1,11 +1,14 @@
+import re
+
 from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(user_data: str) -> str:  # type: ignore
     """Принимает наименование карты и её номер или наименование счёта и его номер.
-    Возвращает наименование карты / счёта без изменений и замаскированный номер."""
+    Возвращает наименование карты / счёта и замаскированный номер."""
 
-    import re
+    if not isinstance(user_data, str):
+        return "*не указано*"
 
     name_bank = re.findall(r"[а-яёА-ЯЁa-zA-Z]+", user_data)
     number_account = re.findall(r"\d+", user_data)

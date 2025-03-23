@@ -8,8 +8,8 @@ from src.external_api import get_convert_currency
 logger = get_logger()
 
 
-def read_json(path: str = "") -> list[dict]:
-    """Чтение файлов json, преобразование в объект python."""
+def read_json(path: str) -> list[dict]:
+    """Чтение файлов json и преобразование в объект python."""
 
     logging.info("Начало работы.")
 
@@ -18,10 +18,8 @@ def read_json(path: str = "") -> list[dict]:
             file_decode = json.load(file)
             if not isinstance(file_decode, list):
                 return []
-    except TypeError as er:
-        logging.error(f"Ошибка {er}")
-        return []
-    except FileNotFoundError as er:
+
+    except (FileNotFoundError, TypeError) as er:
         logging.error(f"Ошибка {er}")
         return []
 
@@ -31,13 +29,13 @@ def read_json(path: str = "") -> list[dict]:
 
 
 def transactions(operations: list[dict]) -> Any:
-    """Принимает транзакцию в рублях, USD или EUR и возвращает сумму транзакции.
-    Обращается к внешнему API для корректировки курса валют и конвертации
-    суммы операции в рубли."""
+    """Возвращает сумму транзакции из списка.
+    Транзакции в другой валюте обрабатываются через API-запрос."""
 
     logging.info("Начало работы.")
     try:
         for elem in operations:
+            logger.info("Перебор элементов")
             if not len(elem):
                 continue
 
@@ -52,5 +50,3 @@ def transactions(operations: list[dict]) -> Any:
 
     except Exception as er:
         logging.error(f" Ошибка {er}")
-
-print(read_json("C:/Users/Sergey/PycharmProjects/Yurii_Belousov/data/operations.json"))

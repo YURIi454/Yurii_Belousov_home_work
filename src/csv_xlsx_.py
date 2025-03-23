@@ -1,6 +1,3 @@
-import csv
-from typing import Any
-
 import pandas as pd
 
 from custom_loger import get_logger
@@ -8,28 +5,21 @@ from custom_loger import get_logger
 logging = get_logger()
 
 
-def read_csv(path: str = "") -> list[dict[Any, Any]]:
-    """Принимает файл формата CSV, возвращает список словарей с транзакциями."""
+def read_csv(path: str) -> list[dict]:
+    """Чтение файлов CSV и преобразование в объект python."""
 
     logging.info("Start.")
     try:
         if ".csv" not in path:
             logging.error(f"Неверный формат файла! ......{path[-10:]}")
-            return []
-        with open(path, mode="r", encoding="UTF-8") as file_csv:
-
-            logging.info("Successful !")
-            reader_dict = csv.DictReader(file_csv, delimiter=";")
-
-            transactions_list = [row for row in reader_dict]
-            return transactions_list
-    except Exception as error:
-        logging.info(f"Ошибка {type(error)}")
+        logging.info("Successful !")
+        return pd.read_csv(path, delimiter=";").to_dict(orient="records")
+    except FileNotFoundError:
         return []
 
 
-def read_xlsx(path: str = "") -> list[dict[Any, Any]]:
-    """Принимает файл формата XLSX, возвращает словарей с транзакциями."""
+def read_xlsx(path: str) -> list[dict]:
+    """Чтение файлов XLSX и преобразование в объект python."""
 
     logging.info("Start.")
     try:
